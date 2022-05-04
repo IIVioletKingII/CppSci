@@ -15,6 +15,9 @@ int main()
 	// cout stands for console output - our basic output statement
 	cout << "Hello World!";
 
+	 int test = 4;
+	 
+
 	/* Without the namespace declaration, the cout line would look
 	 like this:
 
