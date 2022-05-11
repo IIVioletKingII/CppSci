@@ -1,6 +1,5 @@
 #include "math.h"
 
-// Enter your implementation here
 int add( int x, int y ) {
 	return x + y;
 }
