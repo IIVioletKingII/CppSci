@@ -57,7 +57,7 @@ string getSpaces( int numSpaces ) {
 }
 
 // Print the contents of the square, neatly formatted
-void printSquare( vector<vector<int> > &square ) {
+void printBoard( vector<vector<int> > &square ) {
 	int maxLength = 0;
 	for( int col = 0; col < square.size( ); col++ )
 		for( int row = 0; row < square[col].size( ); row++ )
@@ -98,7 +98,7 @@ int main( ) {
 		}
 		// Print out
 		cout << "******** Square " << count << " ********" << endl;
-		printSquare( square );
+		printBoard( square );
 
 		// Display results
 		if( magic( square ) )
