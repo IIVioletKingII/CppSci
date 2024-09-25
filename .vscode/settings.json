@@ -76,5 +76,6 @@
 	"C_Cpp.clang_format_style": "{ BasedOnStyle: Google, TabWidth: 2, UseTab: true, ColumnLimit: 0, SpaceBeforeParens: false, SpaceInEmptyParentheses: true, SpacesBeforeTrailingComments: 1, SpacesInConditionalStatement: true, SpacesInContainerLiterals: true, SpacesInParentheses: true, IndentCaseLabels: true }",
 	"clang-format.language.javascript.fallbackStyle": "",
 	"clang-format.style": "",
-	"C_Cpp.formatting": "default"
+	"C_Cpp.formatting": "default",
+	"code-runner.runInTerminal": true
 }
