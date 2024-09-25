@@ -10,13 +10,13 @@
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],
-			// "args": [
-			//     "-fdiagnostics-color=always",
-			//     "-g",
-			//     "${file}",
-			//     "-o",
-			//     "${fileDirname}\\${fileBasenameNoExtension}.exe"
-			// ],
+			"args_unused": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+			],
 			"options": {
 				"cwd": "${fileDirname}"
 			},
