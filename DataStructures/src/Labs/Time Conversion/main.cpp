@@ -4,7 +4,7 @@ using namespace std;
 
 int main( ) {
 	// To read a single word, you can use the cin command
-	cout << "Please enter a number of seconds:" << endl;
+	cout << "Please enter a number of seconds: ";
 	int inputSeconds;
 	cin >> inputSeconds;
 
