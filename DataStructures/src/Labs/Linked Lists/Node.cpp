@@ -1,24 +1,19 @@
 template <class T>
-class Node
-{
+class Node {
 	public:
-
-		Node(T data)
-		{
+		Node(T data) {
 			m_data = data;
 			m_next = 0;
 		}
 
-		T getData() { return m_data;  }
+		T getData( ) { return m_data; }
 		void setData(T data) { m_data = data; }
 
-		void setNext(Node<T>* next)
-		{
+		void setNext(Node<T>* next) {
 			m_next = next;
 		}
 
-		Node<T>* getNext()
-		{
+		Node<T>* getNext( ) {
 			return m_next;
 		}
 
