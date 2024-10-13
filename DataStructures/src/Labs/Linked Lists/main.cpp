@@ -6,8 +6,14 @@ int main( ) {
 	LinkedList<int> LLInt;
 	LLInt.add(100);
 	LLInt.add(200);
+	LLInt.add(500);
 	LLInt.add(300);
+	LLInt.add(100);
 	LLInt.add(400);
+	LLInt.add(500);
+	LLInt.add(100);
+
+	LLInt.deleteByValue(0);
 
 	for( int i = 0; i < LLInt.getSize( ); ++i ) {
 		std::cout << LLInt.getByIndex(i) << std::endl;
@@ -23,7 +29,7 @@ int main( ) {
 
 	std::cout << std::endl;
 
-	LLInt.deleteByValue(300);
+	LLInt.deleteByValue(100);
 
 	for( int i = 0; i < LLInt.getSize( ); ++i ) {
 		std::cout << LLInt.getByIndex(i) << std::endl;
@@ -40,4 +46,6 @@ int main( ) {
 	for( int i = 0; i < 4; ++i ) {
 		std::cout << LLString.getByIndex(i) << std::endl;
 	}
+
+	// return 0;
 }

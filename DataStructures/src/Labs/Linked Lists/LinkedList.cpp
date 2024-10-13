@@ -13,6 +13,11 @@ class LinkedList {
 			delete m_head;
 		}
 
+		/**
+		 * @brief adds a new node at the end of the list with the passed in data
+		 *
+		 * @param data
+		 */
 		void add(T data) {
 			Node<T>* newNode = new Node<T>(data);
 
@@ -26,8 +31,17 @@ class LinkedList {
 			}
 		}
 
+		/**
+		 * @brief returns the node object at the nth index
+		 *
+		 * @param index
+		 * @return Node<T>*
+		 */
 		Node<T>* findNodeByIndex(int index) {
 			Node<T>* currentNode = m_head;
+
+			if( index == m_size )
+				return m_tail;
 
 			for( int i = 0; i < index; ++i ) {
 				if( currentNode->getNext( ) != 0 ) {
@@ -48,22 +62,19 @@ class LinkedList {
 			Node<T>* currentNode = m_head;
 
 			for( int i = 0; i < m_size; ++i ) {
+				if( currentNode->getData( ) == value ) {
+					return currentNode;
+				}
 				if( currentNode->getNext( ) != 0 ) {
 					currentNode = currentNode->getNext( );
 				}
 			}
-			do {
-				if( currentNode.getData( ) == value )
-					return currentNode;
-				currentNode = currentNode->getNext( );
-
-			} while( currentNode != 0 );
 
 			return 0;
 		}
 
 		/**
-		 * @brief Get the item at index
+		 * @brief Get the item at the nth index
 		 *
 		 * @param index
 		 * @return T
@@ -72,6 +83,11 @@ class LinkedList {
 			return findNodeByIndex(index)->getData( );
 		}
 
+		/**
+		 * @brief deletes the nth index of the list
+		 *
+		 * @param index
+		 */
 		void deleteByIndex(int index) {
 			Node<T>* precedingNode = findNodeByIndex(index - 1);
 
@@ -88,22 +104,32 @@ class LinkedList {
 		}
 
 		/**
-		 * @brief removes value if in list
+		 * @brief removes all occurences of value in list
 		 *
 		 * @param value
 		 */
 		void deleteByValue(T value) {
-			Node<T>* currentNode = m_head;
-
-			do {
-				if( currentNode.getData( ) == value ) {
-					if( currentNode == m_head )
-						m_head = 0;
-					else if( currentNode->getNext( )->getNext( ) = 0 )
+			if( m_size > 0 ) {
+				Node<T>* previousNode = m_head;
+				if( m_head->getData( ) == value ) {
+					m_head = m_head->getNext( );
+					m_size--;
 				}
-				currentNode = currentNode->getNext( );
-
-			} while( currentNode != 0 );
+				while( previousNode->getNext( ) != 0 ) {
+					if( previousNode->getNext( )->getData( ) == value ) {
+						if( previousNode->getNext( ) == m_tail ) {
+							previousNode->setNext(0);
+							m_tail = previousNode;
+						} else if( previousNode->getNext( ) == m_head ) {
+							m_head = previousNode->getNext( )->getNext( );
+						} else {
+							previousNode->setNext(previousNode->getNext( )->getNext( ));
+						}
+						m_size--;
+					} else
+						previousNode = previousNode->getNext( );
+				}
+			}
 		}
 
 		/**
