@@ -22,12 +22,18 @@ class MagicChangeBag : public BagInterface<T> {
 		bool isEmpty( );
 		bool isFull( );
 		void print( );
-		~MagicChangeBag( ) {}
+		~MagicChangeBag( ) {
+			delete[] m_items;
+			delete[] m_hiddenItems;
+		}
 
 	private:
-		std::vector<int> m_items;
-		int m_size = 0;
-		const int m_capacity = 20;
+		void removeIndex(T& arr, int& size, const int index);
+
+		T* m_items;
+		T* m_hiddenItems;
+		int m_size;
+		int m_hiddenSize;
 };
 
 #include "MagicChangeBag.cpp"

@@ -37,17 +37,36 @@ int main2( ) {
 }
 
 int main( ) {
-	BagInterface<int>* bag = new PlainBag<int>;
+	main2( );
+	cout << endl
+			 << "------------------------" << endl;
+	BagInterface<int>* bag = new MagicChangeBag<int>;
 	int test = 25;
-	bool success = bag->insert(test);
+	for( int i = 0; i < 15; ++i ) {
+		int value = rand( ) % 6 + 1; // assume storing integers for sake of simplicity
+		bool success = bag->insert(value);
+		// cout << "Success: " << (success ? "true" : "false") << endl;
+	}
 
-	cout << "Success: " << (success ? "true" : "false") << endl;
 	bag->print( );
+	bag->remove(3);
+	bag->print( );
+
+	for( int i = 0; i < 15; ++i )
+		bag->insert(rand( ) % 6 + 1);
+	cout << "\nSize: " << bag->size( ) << endl;
+	bag->print( );
+	bag->remove(6);
+	bag->print( );
+
+	cout << "\nSize: " << bag->size( ) << endl;
 	return 0;
 }
 /*
 Sample Run:
 Testing Plain Bag
+
+6 6 5 5 6 5 1 1 5 3 6 6 2 4 2  6 2 3 4 1
 
 Bag content:2 2 6 3 5 3 1 3 6 2 1 6 1 3 4 6 2 2 5 5
 Number of items:20

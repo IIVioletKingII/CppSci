@@ -6,7 +6,6 @@
 #define BAGINTERFACE_H
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -34,7 +33,7 @@ class BagInterface {
 		virtual bool insert(const T& item) = 0;
 
 		/**
-		 * @brief removes all occurences of item from the bag
+		 * @brief removes the fitst occurence of item from the bag
 		 *
 		 * @returns True if the operation is successful (the item was found in and removed from the bag), else otherwise
 		 */
@@ -87,8 +86,6 @@ class BagInterface {
 		 */
 		virtual void print( ) = 0;
 
-	private:
-		// int m_capacity = 0;
+		const int capacity = 20;
 };
-
 #endif // BAGINTERFACE_H

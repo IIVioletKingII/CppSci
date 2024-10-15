@@ -89,7 +89,7 @@
 	},
 	"C_Cpp.clang_format_fallbackStyle": "Google",
 	"C_Cpp.clang_format_path": "",
-	"C_Cpp.clang_format_style": "{ BasedOnStyle: Chromium, TabWidth: 2, UseTab: true, ColumnLimit: 0, KeepEmptyLines: {AtStartOfBlock: true}, IndentAccessModifiers: true, SpaceBeforeParens: false, SpaceInEmptyParentheses: true, SpacesBeforeTrailingComments: 1, SpacesInConditionalStatement: true, SpacesInContainerLiterals: true, IndentCaseLabels: true }",
+	"C_Cpp.clang_format_style": "{ BasedOnStyle: Chromium, TabWidth: 2, UseTab: true, ColumnLimit: 0, KeepEmptyLines: {AtStartOfBlock: true}, MaxEmptyLinesToKeep: 3, IndentAccessModifiers: true, SpaceBeforeParens: false, SpaceInEmptyParentheses: true, SpacesBeforeTrailingComments: 1, SpacesInConditionalStatement: true, SpacesInContainerLiterals: true, IndentCaseLabels: true }",
 	"clang-format.language.javascript.fallbackStyle": "",
 	"clang-format.style": "",
 	"C_Cpp.formatting": "default",

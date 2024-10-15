@@ -27,9 +27,9 @@ class PlainBag : public BagInterface<T> {
 		}
 
 	private:
+		void removeIndex(int index);
 		T* m_items;
 		int m_size;
-		int m_capacity;
 };
 
 #include "PlainBag.cpp"
