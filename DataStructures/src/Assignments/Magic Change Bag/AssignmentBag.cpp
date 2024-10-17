@@ -38,28 +38,28 @@ int main2( ) {
 
 int main( ) {
 	main2( );
-	cout << endl
-			 << "------------------------" << endl;
-	BagInterface<int>* bag = new MagicChangeBag<int>;
-	int test = 25;
-	for( int i = 0; i < 15; ++i ) {
-		int value = rand( ) % 6 + 1; // assume storing integers for sake of simplicity
-		bool success = bag->insert(value);
-		// cout << "Success: " << (success ? "true" : "false") << endl;
-	}
+	// cout << endl
+	// 		 << "------------------------" << endl;
+	// BagInterface<int>* bag = new MagicChangeBag<int>;
+	// int test = 25;
+	// for( int i = 0; i < 15; ++i ) {
+	// 	int value = rand( ) % 6 + 1; // assume storing integers for sake of simplicity
+	// 	bool success = bag->insert(value);
+	// 	// cout << "Success: " << (success ? "true" : "false") << endl;
+	// }
 
-	bag->print( );
-	bag->remove(3);
-	bag->print( );
+	// bag->print( );
+	// bag->remove(3);
+	// bag->print( );
 
-	for( int i = 0; i < 15; ++i )
-		bag->insert(rand( ) % 6 + 1);
-	cout << "\nSize: " << bag->size( ) << endl;
-	bag->print( );
-	bag->remove(6);
-	bag->print( );
+	// for( int i = 0; i < 15; ++i )
+	// 	bag->insert(rand( ) % 6 + 1);
+	// cout << "\nSize: " << bag->size( ) << endl;
+	// bag->print( );
+	// bag->remove(6);
+	// bag->print( );
 
-	cout << "\nSize: " << bag->size( ) << endl;
+	// cout << "\nSize: " << bag->size( ) << endl;
 	return 0;
 }
 /*

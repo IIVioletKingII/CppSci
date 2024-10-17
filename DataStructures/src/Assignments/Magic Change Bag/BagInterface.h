@@ -8,17 +8,14 @@
 #include <iostream>
 
 using namespace std;
-
-// int CAPACITY = 20;
-
+/**
+ * @brief interface: a bag that contain 20 some-type T items
+ *
+ * @tparam T
+ */
 template <class T>
 class BagInterface {
 	public:
-		/**
-		 * @brief Creates the Bag
-		 *
-		 */
-		// virtual BagInterface( ) = 0;
 		/**
 		 * @brief Destroys the Bag
 		 *

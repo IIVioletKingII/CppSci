@@ -9,6 +9,11 @@
 
 using namespace std;
 
+/**
+ * @brief a plain simple bag of 20 items of type T from `BagInterface`
+ *
+ * @tparam T
+ */
 template <class T>
 class PlainBag : public BagInterface<T> {
 	public:
