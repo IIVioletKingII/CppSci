@@ -24,7 +24,7 @@ void testBag(BagInterface<T>& bag) {
 	cout << "\nNumber of twos:" << bag.itemCount(item2);
 };
 
-int main2( ) {
+int main( ) {
 	cout << "\n..............................." << endl;
 	cout << "Testing Plain Bag" << endl;
 	BagInterface<int>* bag = new PlainBag<int>;
@@ -36,8 +36,8 @@ int main2( ) {
 	return 0;
 }
 
-int main( ) {
-	main2( );
+int main2( ) {
+	// main2( );
 	// cout << endl
 	// 		 << "------------------------" << endl;
 	// BagInterface<int>* bag = new MagicChangeBag<int>;
