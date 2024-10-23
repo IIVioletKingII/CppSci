@@ -3,8 +3,8 @@
 // Modfied by sam.depoule on 10/20/2024.
 //
 
-#ifndef STACK_TPP
-#define STACK_TPP
+// #ifndef STACK_CPP
+// #define STACK_H
 
 #include "Stack.h"
 
@@ -66,5 +66,3 @@ T Stack<T>::pop( ) {
 
 	return topData;
 }
-
-#endif // STACK_TPP

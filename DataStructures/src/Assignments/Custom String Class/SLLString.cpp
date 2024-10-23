@@ -32,7 +32,7 @@ SLLString::SLLString(const SLLString& other) {
 		Node* oth = other.m_pHead;
 		Node* node = m_pHead;
 
-		while( oth.next ) {
+		while( oth->next ) {
 			oth = oth->m_next;
 
 			node->m_next = new Node(oth->data);
