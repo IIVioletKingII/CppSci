@@ -3,9 +3,6 @@
 // Modfied by sam.depoule on 10/20/2024.
 //
 
-// #ifndef STACK_CPP
-// #define STACK_H
-
 #include "Stack.h"
 
 template <class T>
