@@ -1,31 +1,30 @@
 #include <iostream>
 #include <string>
+using namespace std;
 #include "SLLString.h"
 
 int main( ) {
-	// char test = NULL;
-	// std::cout /* << test is NULL */ << " and " << std == NULL << std::endl;
-
-	// std::cout << "Hi there" << std::endl;
-
 	SLLString str("Hello world!");
 	SLLString newStr;
 
 	newStr = str;
-	// newStr += SLLString("CS@BC");
-	// newStr[6] = 'W';
 
-	// std::cout << newStr << std::endl; // Hello World! CS@BC
-	// std::cout << newStr.length( ) << std::endl; // 18
+	newStr += SLLString(" CS@BC");
+	newStr[6] = 'W';
 
-	// int loc = newStr.findSubstring("World");
-	// std::cout << loc << std::endl; // 6
+	cout << str << endl;												 // Hello World! CS@BC
+	cout << "Length: " << str.length( ) << endl; // 18
 
-	// newStr.erase('l');								// erase the letter l
-	// std::cout << newStr << std::endl; // Heo Word! CS@BC
+	int loc = newStr.findSubstring("World");
+	cout << loc << endl; // 6
+
+	// newStr.erase('H');															// erase the letter l
+	// cout << newStr << endl;													// Heo Word! CS@BC
+	// cout << "Length: " << newStr.length( ) << endl; // 15
 
 	// newStr.erase('C');
-	// std::cout << newStr << std::endl; // Heo Word! S@B
+	// cout << newStr << endl;													// Heo Word! S@B
+	// cout << "Length: " << newStr.length( ) << endl; // 13
 
 	return 0;
 }

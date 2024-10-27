@@ -6,7 +6,6 @@
 class Node {
 	public:
 		Node( ) {
-			// data = NULL;
 			m_next = nullptr;
 		};
 		Node(char tempData) {

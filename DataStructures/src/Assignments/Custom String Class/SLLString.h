@@ -14,7 +14,12 @@ class SLLString {
 
 		SLLString& operator=(const SLLString& other);
 		SLLString& operator+=(const SLLString& other);
-		friend std::ostream& operator<<(std::ostream& os, const SLLString& other);
+		friend std::ostream& operator<<(std::ostream& os, const SLLString& other) /*  {
+			 if( other->m_pHead )
+				 os << 't';
+			 return os;
+		 } */
+				;
 
 		// Get character at index n
 		char& operator[](const int n);
@@ -34,6 +39,13 @@ class SLLString {
 		Node* m_pTail;
 		int m_length;
 };
+
+
+// std::ostream& operator<<(std::ostream& os, const SLLString& other) {
+// 	if( m_pHead )
+// 		os << 't';
+// 	return os;
+// }
 
 #include "SLLString.cpp"
 
