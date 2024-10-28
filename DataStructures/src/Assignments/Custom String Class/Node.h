@@ -1,13 +1,21 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <string>
-
+/**
+ * @brief a singly linked node containing a character
+ *
+ */
 class Node {
 	public:
+		/**
+		 * @brief Construct a null Node
+		 */
 		Node( ) {
 			m_next = nullptr;
 		};
+		/**
+		 * @brief Construct a Node with data
+		 */
 		Node(char tempData) {
 			data = tempData;
 			m_next = nullptr;

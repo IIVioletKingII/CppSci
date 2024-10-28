@@ -7,7 +7,6 @@
 #define SLLSTRING_CPP
 
 #include "SLLString.h"
-#include <iostream>
 #include <string>
 
 SLLString::SLLString( ) {
@@ -54,6 +53,8 @@ SLLString::SLLString(const SLLString& other) {
 }
 
 SLLString::~SLLString( ) {
+	m_pHead = nullptr;
+	m_pTail = nullptr;
 }
 
 
@@ -142,14 +143,14 @@ int SLLString::findSubstring(const std::string substring) {
 			if( ptr->data == substring[0] ) {
 				if( substring.length( ) == 1 )
 					return index;
-				int substringIndex = 0;
-				Node* cur = ptr;
+				int substringIndex = 1;
+				Node* cur = ptr->m_next;
 				while( cur && substringIndex >= 0 && substringIndex < substring.length( ) ) {
 					if( substring[substringIndex++] != cur->data )
 						substringIndex = -1;
 					cur = cur->m_next;
 				}
-				if( substringIndex == substring.length( ) - 1 )
+				if( substringIndex == substring.length( ) )
 					return index;
 			}
 			++index;
