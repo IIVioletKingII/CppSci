@@ -53,14 +53,23 @@ SLLString::SLLString(const SLLString& other) {
 }
 
 SLLString::~SLLString( ) {
-	m_pHead = nullptr;
-	m_pTail = nullptr;
+	deleteNodeChain(m_pHead);
 }
 
+void SLLString::deleteNodeChain(Node* startingNode) {
+	while( startingNode ) {
+		Node* ptr = startingNode;
+		startingNode = startingNode->m_next;
+		delete ptr;
+	}
+}
 
 SLLString& SLLString::operator=(const SLLString& other) {
 	if( other.m_pHead ) {
-		m_pHead = new Node(other.m_pHead->data);
+		if( m_pHead )
+			m_pHead->data = other.m_pHead->data;
+		else
+			m_pHead = new Node(other.m_pHead->data);
 		Node* oth = other.m_pHead;
 		Node* node = m_pHead;
 		m_length = 1;
@@ -68,13 +77,19 @@ SLLString& SLLString::operator=(const SLLString& other) {
 		while( oth->m_next ) {
 			oth = oth->m_next;
 
-			node->m_next = new Node(oth->data);
+			if( node->m_next )
+				node->m_next->data = oth->data;
+			else
+				node->m_next = new Node(oth->data);
 			node = node->m_next;
 			++m_length;
 		}
+		if( node->m_next )
+			deleteNodeChain(node->m_next);
 		m_pTail = node;
 
 	} else {
+		deleteNodeChain(m_pHead);
 		m_pHead = nullptr;
 		m_pTail = nullptr;
 		m_length = 0;

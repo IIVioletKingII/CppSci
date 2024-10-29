@@ -60,6 +60,7 @@ class SLLString {
 		Node* m_pHead;
 		Node* m_pTail;
 		int m_length;
+		void deleteNodeChain(Node* startingNode);
 };
 
 #endif
