@@ -13,7 +13,38 @@ int mystery(int j) {
 	return 2 * mystery(j - 1) + 5 * mystery(j - 2);
 }
 
+class Node {
+	public:
+		Node(int val) {
+			value = val;
+		};
+		int value;
+		Node* next = NULL;
+};
+
 int main( ) {
+	Node* head = new Node(2);
+	Node* cur = head;
+	for( int i = 4; i <= 14; i += 2 ) {
+		cur->next = new Node(i);
+		cur = cur->next;
+	}
+
+	Node* curr = head;
+	while( curr->next->next->next != NULL ) {
+		curr = curr->next;
+	}
+	curr->next = NULL;
+
+	cout << "[";
+	cur = head;
+	while( cur ) {
+		cout << cur->value << (cur->next != NULL ? ", " : "]");
+		cur = cur->next;
+	}
+	// curr->value = 2;
+
+
 	// int x = 4, *px = &x;
 	// int y = 8, &ry = y;
 
@@ -28,9 +59,9 @@ int main( ) {
 
 	// cout << mystery(2) << endl;
 
-	int A[10];
-	int* pa;
-	pa = A;
+	// int A[10];
+	// int* pa;
+	// pa = A;
 
 	// *pa = *pa + 1;
 
@@ -42,6 +73,7 @@ int main( ) {
 
 	return 0;
 }
+
 
 /*
 
