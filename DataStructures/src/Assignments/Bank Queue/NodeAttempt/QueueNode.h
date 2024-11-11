@@ -15,8 +15,8 @@
 template <class T>
 class QueueNode : public QueueADT<T> {
 	public:
-		Queue( );
-		~Queue( );
+		QueueNode( );
+		~QueueNode( );
 		void enqueue(const T& input);
 		T& dequeue( );
 		T& peek( );

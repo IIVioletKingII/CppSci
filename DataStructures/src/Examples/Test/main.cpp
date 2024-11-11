@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 using namespace std;
 
 int mystery2(int a) {
@@ -22,27 +23,56 @@ class Node {
 		Node* next = NULL;
 };
 
+class Data {
+	private:
+		int p;
+
+	public:
+		Data(int v = 0) {
+			p = v;
+			cout << p;
+		};
+		~Data( ) {
+			cout << "~" << p;
+		}
+};
+
+shared_ptr<Data> s0;
+
+void test( ) {
+	shared_ptr<Data> s1 = make_shared<Data>(3);
+	s0 = s1;
+	cout << s1.use_count( );
+}
+
 int main( ) {
-	Node* head = new Node(2);
-	Node* cur = head;
-	for( int i = 4; i <= 14; i += 2 ) {
-		cur->next = new Node(i);
-		cur = cur->next;
-	}
 
-	Node* curr = head;
-	while( curr->next->next->next != NULL ) {
-		curr = curr->next;
-	}
-	curr->next = NULL;
+	char test;
 
-	cout << "[";
-	cur = head;
-	while( cur ) {
-		cout << cur->value << (cur->next != NULL ? ", " : "]");
-		cur = cur->next;
-	}
+	cout << "'" << test << "'" << endl;
+
+	// Node* head = new Node(2);
+	// Node* cur = head;
+	// for( int i = 4; i <= 14; i += 2 ) {
+	// 	cur->next = new Node(i);
+	// 	cur = cur->next;
+	// }
+
+	// Node* curr = head;
+	// while( curr->next->next->next != NULL ) {
+	// 	curr = curr->next;
+	// }
+	// curr->next = NULL;
+
+	// cout << "[";
+	// cur = head;
+	// while( cur ) {
+	// 	cout << cur->value << (cur->next != NULL ? ", " : "]");
+	// 	cur = cur->next;
+	// }
+
 	// curr->value = 2;
+
 
 
 	// int x = 4, *px = &x;
