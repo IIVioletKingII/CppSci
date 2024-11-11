@@ -1,5 +1,6 @@
 /**
  * @file Simulation.cpp
+ * @author Sam DePoule
  */
 
 #ifndef SIMULATION_CPP

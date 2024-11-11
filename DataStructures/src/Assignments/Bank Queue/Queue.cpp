@@ -1,5 +1,6 @@
 /**
  * @file Queue.cpp
+ * @author Sam DePoule
  */
 
 #ifndef QUEUE_CPP

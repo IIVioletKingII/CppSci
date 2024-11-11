@@ -2,8 +2,8 @@
  * @file Queue.h
  */
 
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUE_NODE_H
+#define QUEUE_NODE_H
 
 #include "QueueADT.h"
 
@@ -13,8 +13,10 @@
  * @tparam T
  */
 template <class T>
-class Queue : public QueueADT<T> {
+class QueueNode : public QueueADT<T> {
 	public:
+		Queue( );
+		~Queue( );
 		void enqueue(const T& input);
 		T& dequeue( );
 		T& peek( );
@@ -23,7 +25,6 @@ class Queue : public QueueADT<T> {
 		bool isFull( );
 
 	private:
-		~Queue( );
 		class Node {
 			public:
 				Node(T* data) {
@@ -38,6 +39,6 @@ class Queue : public QueueADT<T> {
 		Node* m_back;
 };
 
-#include "Queue.cpp"
+#include "QueueNode.cpp"
 
-#endif // QUEUE_H
+#endif // QUEUE_NODE_H

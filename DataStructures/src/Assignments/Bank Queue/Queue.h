@@ -1,5 +1,6 @@
 /**
  * @file Queue.h
+ * @author Sam DePoule
  */
 
 #ifndef QUEUE_H

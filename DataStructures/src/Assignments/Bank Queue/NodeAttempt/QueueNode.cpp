@@ -1,15 +1,20 @@
 /**
- * @file Queue.cpp
+ * @file QueueNode.cpp
  */
 
-#ifndef QUEUE_CPP
-#define QUEUE_CPP
+#ifndef Queue_NODE_CPP
+#define Queue_NODE_CPP
 
-#include "Queue.h"
+#include "QueueNode.h"
 #include <iostream>
 
 template <class T>
-Queue<T>::~Queue( ) {
+QueueNode<T>::QueueNode( )
+		: m_length(0) {
+}
+
+template <class T>
+QueueNode<T>::~QueueNode( ) {
 	while( m_front ) {
 		Node* temp = m_front;
 		m_front = m_front->m_next;
@@ -21,7 +26,7 @@ Queue<T>::~Queue( ) {
 
 
 template <class T>
-void Queue<T>::enqueue(const T& input) {
+void QueueNode<T>::enqueue(const T& input) {
 	if( !isFull( ) ) {
 		std::cout << input << std::endl;
 		T* data = new T(input);
@@ -38,7 +43,7 @@ void Queue<T>::enqueue(const T& input) {
 }
 
 template <class T>
-T& Queue<T>::dequeue( ) {
+T& QueueNode<T>::dequeue( ) {
 	// T result = m_front->m_data;
 	// if( m_front ) {
 	// 	m_front = m_front->m_next;
@@ -49,13 +54,13 @@ T& Queue<T>::dequeue( ) {
 }
 
 template <class T>
-T& Queue<T>::peek( ) {
+T& QueueNode<T>::peek( ) {
 	// return m_front->m_data;
 	// return nullptr;
 }
 
 template <class T>
-void Queue<T>::print( ) {
+void QueueNode<T>::print( ) {
 	Node* cur = m_front;
 	std::cout << "F [ ";
 	while( cur ) {
@@ -67,13 +72,13 @@ void Queue<T>::print( ) {
 }
 
 template <class T>
-bool Queue<T>::isEmpty( ) {
+bool QueueNode<T>::isEmpty( ) {
 	return m_length == 0;
 }
 
 template <class T>
-bool Queue<T>::isFull( ) {
+bool QueueNode<T>::isFull( ) {
 	return m_length == 100;
 }
 
-#endif // QUEUE_CPP
+#endif // Queue_NODE_CPP

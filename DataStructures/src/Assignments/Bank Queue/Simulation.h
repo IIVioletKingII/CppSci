@@ -1,5 +1,6 @@
 /**
  * @file Simulation.h
+ * @author Sam DePoule
  */
 
 
@@ -25,13 +26,13 @@ Queue<Customer> readCustomers(string fileNum = "1") {
 
 		int numCustomers;
 		fileStream >> numCustomers;
-		cout << numCustomers << endl;
+		// cout << numCustomers << endl;
 
 		for( int i = 0; i < numCustomers; ++i ) {
 			int arrivalTime, helpDuration;
 			fileStream >> arrivalTime;
 			fileStream >> helpDuration;
-			cout << arrivalTime << " " << helpDuration << endl;
+			// cout << arrivalTime << " " << helpDuration << endl;
 			Customer cus(arrivalTime, helpDuration);
 			customers.enqueue(cus);
 		}

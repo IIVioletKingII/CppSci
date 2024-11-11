@@ -1,5 +1,6 @@
 /**
  * @file Customer.h
+ * @author Sam DePoule
  */
 
 #ifndef CUSTOMER_H
