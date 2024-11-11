@@ -10,23 +10,22 @@
 
 template <class T>
 Queue<T>::Queue( )
-		: m_length(25), m_front(0), m_back(-1) /*, m_array(new T[25]) */ {
+		: m_length(25), m_front(0), m_back(-1) {
 	m_array = new T[m_length];
-	// std::cout << "Created array " << m_array[100] << std::endl;
 }
 
 template <class T>
 Queue<T>::~Queue( ) {
 	delete[] m_array;
+	// Results in: "Exception has occurred. - Unknown signal"
 }
 
 template <class T>
 void Queue<T>::enqueue(const T& input) {
-	// std::cout << "adding to array " << m_array[23] << std::endl;
 	if( !isFull( ) ) {
-		if( m_back - m_front > m_length )
+		if( m_back > m_length )
 			setSize(m_back - m_front + 25);
-		// std::cout << input << std::endl;
+
 		m_array[++m_back] = input;
 		++m_length;
 	}
@@ -35,11 +34,15 @@ void Queue<T>::enqueue(const T& input) {
 template <class T>
 T& Queue<T>::dequeue( ) {
 	if( m_back < 0 )
-		throw std::out_of_range("Call to pop() on empty stack.");
-	if( m_front > 25 )
-		setSize(m_back - m_front + 15);
-	--m_length;
-	return m_array[m_front++];
+		throw std::out_of_range("Call to dequeue() on empty queue.");
+	if( m_front > 20 )
+		shiftQueue( );
+	int frontIndex = m_front;
+	if( m_front++ == m_back ) {
+		m_front = 0;
+		m_back = -1;
+	}
+	return m_array[frontIndex];
 }
 
 template <class T>
@@ -58,7 +61,7 @@ void Queue<T>::print( ) {
 
 template <class T>
 bool Queue<T>::isEmpty( ) {
-	return m_front == m_back;
+	return m_back == -1;
 }
 
 template <class T>
@@ -67,8 +70,18 @@ bool Queue<T>::isFull( ) {
 }
 
 template <class T>
+void Queue<T>::shiftQueue( ) {
+	int i = 0;
+	for( int j = m_front; i < m_back; ++i, ++j )
+		m_array[i] = m_array[j];
+
+	m_front = 0;
+	m_back = i;
+}
+
+template <class T>
 void Queue<T>::setSize(int newLength) {
-	int queueLength = m_back - m_front;
+	m_length = newLength;
 	T* newArr = new T[newLength];
 
 	int i = 0;

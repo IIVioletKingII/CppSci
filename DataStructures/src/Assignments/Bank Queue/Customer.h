@@ -26,9 +26,6 @@ class Customer {
 			m_helpDuration = helpTime;
 		};
 
-		~Customer( ) {
-		};
-
 		/**
 		 * @brief Sets the arrival time of the customer
 		 * @param arrival the new arrival time in seconds

@@ -25,6 +25,15 @@ class Queue : public QueueADT<T> {
 		bool isFull( );
 
 	private:
+		/**
+		 * @brief Shifts the items of the array to index 0
+		 */
+		void shiftQueue( );
+		/**
+		 * @brief Set the size of the array and moves the items of the array to index 0
+		 *
+		 * @param newLength
+		 */
 		void setSize(int newLength);
 		int m_length;
 		int m_front;
