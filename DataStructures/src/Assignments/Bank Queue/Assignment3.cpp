@@ -6,7 +6,8 @@
 #include "Simulation.h"
 
 int main( ) {
-	Queue<Customer> bankCustomers = readCustomers( ); // Read the list of customers and arrival times from a file
+	Queue<Customer> bankCustomers = readCustomers( ); // Read the list of customers and arrival times from data.txt
+	// Queue<Customer> bankCustomers = readCustomers("./Data/SampleInput-7.dat");
 	Simulation bankSimulation;
 	std::cout << "Processing Customers:" << std::endl;
 	bankSimulation.processCustomers(bankCustomers); // Simulates the teller serving the customers in the queue

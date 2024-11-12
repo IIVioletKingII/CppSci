@@ -3,7 +3,6 @@
  * @author Sam DePoule
  */
 
-
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
@@ -16,12 +15,16 @@
 
 using namespace std;
 
-Queue<Customer> readCustomers(string fileNum = "1") {
+/**
+ * @brief Imports customer data from a filename
+ *
+ * @param fileName the name and path to the specified file (default - "./data.txt")
+ * @return Queue<Customer>
+ */
+Queue<Customer> readCustomers(string fileName = "./data.txt") {
 	Queue<Customer> customers;
 
-	string path = "./Data/";
-	string fileName = "SampleInput-" + fileNum + ".dat";
-	ifstream fileStream(path + fileName);
+	ifstream fileStream(fileName);
 	if( fileStream.is_open( ) ) {
 
 		int numCustomers;
@@ -44,10 +47,17 @@ Queue<Customer> readCustomers(string fileNum = "1") {
 	return customers;
 }
 
+/**
+ * @brief Simulates processing customers in a queue
+ *
+ */
 class Simulation {
 	public:
+		/** @brief Construct a new Simulation */
 		Simulation( );
+		/** @brief Runs the simulation */
 		void processCustomers(Queue<Customer> customers);
+		/** @brief Prints the simulation results */
 		void printStatistics( );
 
 	private:
