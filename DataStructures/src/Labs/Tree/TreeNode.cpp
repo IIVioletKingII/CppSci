@@ -8,29 +8,20 @@
 #include "TreeNode.h"
 #include <iostream>
 
-// template <class T>
-// TreeNode<T>::TreeNode( ) {
-// 	data = nullptr;
-// 	left = nullptr;
-// 	left = nullptr;
-// }
-
 template <class T>
-TreeNode<T>::TreeNode(T value) {
-
-	std::cout << "Here 1 " << value << std::endl;
-	this->data = value;
-	this->left = left;
-	this->right = right;
+TreeNode<T>::TreeNode( )
+		: left(nullptr), right(nullptr) {
+	// data = nullptr;
 }
 
 template <class T>
-TreeNode<T>::TreeNode(T value, TreeNode<T>* left, TreeNode<T>* right) {
+TreeNode<T>::TreeNode(T value)
+		: data(value), left(nullptr), right(nullptr) {
+}
 
-	std::cout << "Here 1 " << value << std::endl;
-	this->data = value;
-	this->left = left;
-	this->right = right;
+template <class T>
+TreeNode<T>::TreeNode(T value, TreeNode<T>* left, TreeNode<T>* right)
+		: data(value), left(left), right(right) {
 }
 
 // template <class T>
@@ -38,12 +29,12 @@ TreeNode<T>::TreeNode(T value, TreeNode<T>* left, TreeNode<T>* right) {
 // 	this->data = value;
 // 	this->left = left;
 // 	this->right = right;
-// 	std::cout << "Here 2 " << value << std::endl;
+// 	std::cout << "Here 2: " << value << std::endl;
 // }
 
 // template <class T>
-// std::ostream& operator<<(std::ostream& os, const TreeNode& other) {
-// 	return (os /* << other->data */);
+// std::ostream& operator<<(std::ostream& os, const TreeNode<T>& other) {
+// 	return (os << other->data);
 // }
 
 #endif // TREE_NODE_CPP

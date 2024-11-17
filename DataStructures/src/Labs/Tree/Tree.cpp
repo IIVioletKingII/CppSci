@@ -12,23 +12,45 @@
 #include "TreeNode.h"
 
 template <class T>
-Tree<T>::Tree( ) {
+Tree<T>::Tree( )
+		: overallRoot(nullptr) {
+	// overallRoot = nullptr;
 }
 
 
-template <class T>
-Tree<T>::Tree(TreeNode<T> node) {
-}
+// template <class T>
+// Tree<T>::Tree(const TreeNode<T> node) {
+// 	overallRoot = new TreeNode(node.data);
+// }
 
 
 template <class T>
-Tree<T>::Tree(TreeNode<T> node, bool fullTree) {
-	overallRoot = fullTree ? node : new TreeNode(node.value);
+Tree<T>::Tree(TreeNode<T>* node, bool fullTree) {
+	overallRoot = fullTree ? node : new TreeNode<T>(node->data);
 }
 
 template <class T>
 Tree<T>::~Tree( ) {
+	deleteNode(overallRoot);
 }
+
+template <class T>
+void Tree<T>::deleteNode(TreeNode<T>* node) {
+	if( node ) {
+		deleteNode(node->left);
+		deleteNode(node->right);
+
+		delete node;
+	}
+}
+
+
+template <class T>
+void Tree<T>::add(T nums[], int size) {
+	for( int i = 0; i < size; ++i )
+		insert(nums[i]);
+}
+
 
 template <class T>
 void Tree<T>::insert(T val) {
@@ -36,22 +58,22 @@ void Tree<T>::insert(T val) {
 	if( overallRoot )
 		insert(val, overallRoot);
 	else
-		overallRoot = new TreeNode(val);
+		overallRoot = new TreeNode<T>(val);
 }
 
 
 template <class T>
-void Tree<T>::insert(T val, TreeNode<T> node) {
-	if( val > node.value ) {
-		if( node.right == nullptr )
-			node.right = new TreeNode(val);
+void Tree<T>::insert(T val, TreeNode<T>* node) {
+	if( val > node->data ) {
+		if( node->right == nullptr )
+			node->right = new TreeNode<T>(val);
 		else
-			insert(val, node.right);
+			insert(val, node->right);
 	} else {
-		if( node.left == nullptr )
-			node.left = new TreeNode(val);
+		if( node->left == nullptr )
+			node->left = new TreeNode<T>(val);
 		else
-			insert(val, node.left);
+			insert(val, node->left);
 	}
 }
 
@@ -63,40 +85,40 @@ void Tree<T>::printSideways( ) {
 
 
 template <class T>
-void Tree<T>::printSideways(TreeNode<T> root, int level) {
-	if( root != nullptr ) {
-		printSideways(root.right, level + 1);
+void Tree<T>::printSideways(TreeNode<T>* root, int level) {
+	if( root ) {
+		printSideways(root->right, level + 1);
 		for( int i = 0; i < level; i++ )
 			std::cout << "    ";
-		std::cout << root.value << std::endl;
-		printSideways(root.left, level + 1);
+		std::cout << root->data << std::endl;
+		printSideways(root->left, level + 1);
 	}
 }
 
-template <class T>
-void Tree<T>::trim(T min, T max) {
-	overallRoot = trim(min, max, overallRoot);
-}
+// template <class T>
+// void Tree<T>::trim(T min, T max) {
+// 	overallRoot = trim(min, max, overallRoot);
+// }
 
 
-template <class T>
-TreeNode<T> Tree<T>::trim(T min, T max, TreeNode<T> node) {
+// template <class T>
+// TreeNode<T>* Tree<T>::trim(T min, T max, TreeNode<T>* node) {
 
-	if( node == nullptr )
-		return nullptr;
+// 	if( node == nullptr )
+// 		return nullptr;
 
-	if( node.value < min )
-		return trim(min, max, node.right);
-	if( node.value > max )
-		return trim(min, max, node.left);
+// 	if( node->data < min )
+// 		return trim(min, max, node->right);
+// 	if( node->data > max )
+// 		return trim(min, max, node->left);
 
-	if( node.left != nullptr )
-		node.left = trim(min, max, node.left);
-	if( node.right != nullptr )
-		node.right = trim(min, max, node.right);
+// 	if( node->left != nullptr )
+// 		node->left = trim(min, max, node->left);
+// 	if( node->right != nullptr )
+// 		node->right = trim(min, max, node->right);
 
-	return node;
-}
+// 	return node;
+// }
 
 
 template <class T>
@@ -106,27 +128,18 @@ void Tree<T>::tighten( ) {
 
 
 template <class T>
-TreeNode<T> Tree<T>::tighten(TreeNode<T> node) {
+TreeNode<T> Tree<T>::tighten(TreeNode<T>* node) {
 
 	if( node != nullptr ) {
-		if( (node.left != nullptr && node.right != nullptr) || (node.left == nullptr && node.right == nullptr) ) {
-			node.left = tighten(node.left);
-			node.right = tighten(node.right);
+		if( (node->left != nullptr && node->right != nullptr) || (node->left == nullptr && node->right == nullptr) ) {
+			node->left = tighten(node->left);
+			node->right = tighten(node->right);
 		} else
-			return tighten(node.left != nullptr ? node.left : node.right);
+			return tighten(node->left != nullptr ? node->left : node->right);
 	}
 
 	return node;
 }
-
-
-template <class T>
-void Tree<T>::add(T nums[], int size) {
-	for( int i = 0; i < size; ++i )
-		insert(nums[i]);
-}
-
-
 
 template <class T>
 Tree<T> Tree<T>::combineWith(Tree t) {
@@ -137,7 +150,7 @@ Tree<T> Tree<T>::combineWith(Tree t) {
 
 
 template <class T>
-TreeNode<T> Tree<T>::getIfValid(TreeNode<T> node, bool left) {
+TreeNode<T> Tree<T>::getIfValid(TreeNode<T>* node, bool left) {
 	if( node == nullptr )
 		return nullptr;
 	return left ? node.left : node.right;
@@ -145,7 +158,7 @@ TreeNode<T> Tree<T>::getIfValid(TreeNode<T> node, bool left) {
 
 
 template <class T>
-TreeNode<T> Tree<T>::combineWith(TreeNode<T> n1, TreeNode<T> n2) {
+TreeNode<T> Tree<T>::combineWith(TreeNode<T>* n1, TreeNode<T>* n2) {
 	int val = 0;
 	if( n1 != nullptr )
 		val += 1;
@@ -191,7 +204,7 @@ void Tree<T>::evenLevels( ) {
 
 
 template <class T>
-TreeNode<T> Tree<T>::evenLevels(TreeNode<T> node, int lvl) {
+TreeNode<T> Tree<T>::evenLevels(TreeNode<T>* node, int lvl) {
 	if( node == nullptr )
 		return nullptr;
 	if( lvl++ % 2 == 1 && node.left == nullptr && node.right == nullptr )
@@ -210,7 +223,7 @@ int Tree<T>::height( ) {
 
 
 template <class T>
-int Tree<T>::height(TreeNode<T> root) {
+int Tree<T>::height(TreeNode<T>* root) {
 	return root == nullptr ? 0 : 1 + std::max(height(root.left), height(root.right));
 }
 
@@ -222,17 +235,17 @@ void Tree<T>::makePerfect( ) {
 
 
 template <class T>
-TreeNode<T> Tree<T>::makePerfect(TreeNode<T> node, int maxHeight, int lvl) {
+TreeNode<T> Tree<T>::makePerfect(TreeNode<T>* node, int maxHeight, int lvl) {
 	if( node != nullptr ) {
-		lvl++;
+		++lvl;
 		if( lvl <= maxHeight ) {
-			if( node.left == nullptr )
-				node.left = new TreeNode(0);
-			if( node.right == nullptr )
-				node.right = new TreeNode(0);
+			if( node->left == nullptr )
+				node->left = new TreeNode(0);
+			if( node->right == nullptr )
+				node->right = new TreeNode(0);
 		}
-		node.left = makePerfect(node.left, maxHeight, lvl);
-		node.right = makePerfect(node.right, maxHeight, lvl);
+		node.left = makePerfect(node->left, maxHeight, lvl);
+		node.right = makePerfect(node->right, maxHeight, lvl);
 	}
 	return node;
 }
@@ -245,7 +258,7 @@ int Tree<T>::matches(Tree tree) {
 
 
 template <class T>
-int Tree<T>::matches(TreeNode<T> n1, TreeNode<T> n2) {
+int Tree<T>::matches(TreeNode<T>* n1, TreeNode<T>* n2) {
 	if( n1 == nullptr || n2 == nullptr )
 		return 0;
 	return (n1.value == n2.value ? 1 : 0) + (n1.left != nullptr && n2.left != nullptr ? matches(n1.left, n2.left) : 0) + (n1.right != nullptr && n2.right != nullptr ? matches(n1.right, n2.right) : 0);

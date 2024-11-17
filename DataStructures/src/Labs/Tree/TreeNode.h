@@ -13,14 +13,14 @@
 template <class T>
 class TreeNode {
 	public:
-		// TreeNode( );
+		TreeNode( );
 		TreeNode(T value);
 		TreeNode(T value, TreeNode<T>* left, TreeNode<T>* right);
 		// TreeNode(T value, TreeNode<T> left = nullptr, TreeNode<T> right = nullptr);
 
 		// friend std::ostream& operator<<(std::ostream& os, const TreeNode<T>& other);
 
-	private:
+		// private:
 		T data;
 		TreeNode<T>* left;
 		TreeNode<T>* right;
