@@ -5,54 +5,68 @@
 #include "Tree.h"
 #include "TreeNode.h"
 
+using namespace std;
+
 // template <class T>
-// TreeNode<T> n(Tree<T> val) {
+// TreeNode<T> i(Tree<T> val) {
 // 	return new TreeNode(val, nullptr, nullptr);
 // }
 
 template <class T>
 TreeNode<T>* t(T val, TreeNode<T>* l = nullptr, TreeNode<T>* r = nullptr) {
-	TreeNode<T>* n = new TreeNode<T>(val, l, r);
-	return n;
+	return new TreeNode<T>(val, l, r);
 }
 
+TreeNode<int>* i(int val, TreeNode<int>* l = nullptr, TreeNode<int>* r = nullptr) {
+	return new TreeNode<int>(val, l, r);
+}
 
-template <class T>
-TreeNode<int>* n(T val, TreeNode<int>* l = nullptr, TreeNode<int>* r = nullptr) {
-	TreeNode<int>* n = new TreeNode<int>(val, l, r);
-	return n;
+TreeNode<string>* s(string val, TreeNode<string>* l = nullptr, TreeNode<string>* r = nullptr) {
+	return new TreeNode<string>(val, l, r);
 }
 
 int main( ) {
-	TreeNode<int>* a = new TreeNode<int>(3);
-	TreeNode<int> b(5);
-	TreeNode<int> test(7, a, &b);
+	// TreeNode<int>* a = new TreeNode<int>(3);
+	// TreeNode<int> b(5);
+	// TreeNode<int> test(7, a, &b);
 
-	// std::cout << "A: " << test << std::endl;
+	// cout << "A: " << test << endl;
 
-	// Tree<int>* tree = new Tree<int>( );
-	// Tree<int>* tree2 = new Tree<int>( );
 
-	Tree<int> tree = Tree<int>(n(3, n(4, n(0), n(9, nullptr, n(8))), n(7, nullptr, n(2))), true);
-	Tree<int> tree2 = Tree<int>(t<int>(3, t<int>(6, t<int>(0, nullptr, t<int>(8)), nullptr), t<int>(7, t<int>(9), t<int>(2))), true);
+	// Tree<string> tree = Tree<string>(s("A", s("B", s("D"), s("E")), s("C", s("F"), s("G"))), true);
+	// Tree<int> tree = Tree<int>(i(1, i(2, i(4), i(5)), i(3, i(6), i(7))), true);
+	// Tree<int> tree = Tree<int>(i(14, i(2, i(1), i(3)), i(11, i(10, i(7)), i(30, i(40)))), true);
+
+	// Tree<int> tree = Tree<int>(i(3, i(4, i(0), i(9, nullptr, i(8))), i(7, nullptr, i(2))), true);
+	// Tree<int> tree2 = Tree<int>(t<int>(3, t<int>(6, t<int>(0, nullptr, t<int>(8)), nullptr), t<int>(7, t<int>(9), t<int>(2))), true);
+
+	Tree<int> tree = Tree<int>( );
 	int array[11] = {2, 8, 9, 7, 6, 4, 1, 0, 3, 4, 5};
 	tree.add(array, 11);
 
+	// Tree<int> tree2 = Tree<int>( );
+	// int array[7] = {1};
+	// tree2.add(array, 7);
 
+
+	tree.insert(1);
+	tree.traversal( );
+	tree.traversal("pre");
+	tree.traversal("post");
+	cout << "-----------------------" << endl;
 	tree.printSideways( );
-	std::cout << "-----------------------" << std::endl;
-	tree2.printSideways( );
+	// tree2.printSideways( );
 
-	// std::cout << "-----------------------" << std::endl;
+	// cout << "-----------------------" << endl;
 
-	// std::cout << ("height: " + tree.matches(tree2));
+	// cout << ("height: " + tree.matches(tree2));
 	// tree.makePerfect( );
 
-	// std::cout << tree.inOrderList() << std::endl;
-	// std::cout << "-----------------------" << std::endl;
+	// cout << tree.inOrderList() << endl;
+	// cout << "-----------------------" << endl;
 
 	// tree.printSideways( );
-	// std::cout << "-----------------------" << std::endl;
+	// cout << "-----------------------" << endl;
 
 	return 0;
 }

@@ -79,6 +79,44 @@ void Tree<T>::insert(T val, TreeNode<T>* node) {
 
 
 template <class T>
+void Tree<T>::traversal(std::string order) {
+	int orderInt = 0;
+	if( order == "pre" )
+		orderInt = 1;
+	if( order == "post" )
+		orderInt = 2;
+	traversal(orderInt, overallRoot);
+	std::cout << std::endl;
+}
+
+
+template <class T>
+void Tree<T>::traversal(int order, TreeNode<T>* node) {
+	if( node ) {
+		switch( order ) {
+			case 0: // in order (left, this, right)
+				traversal(order, node->left);
+				std::cout << node->data << ",";
+				traversal(order, node->right);
+
+				break;
+			case 1: // pre order (this, left, right)
+
+				std::cout << node->data << ",";
+				traversal(order, node->left);
+				traversal(order, node->right);
+				break;
+			case 2: // post order (left, right, this)
+
+				traversal(order, node->left);
+				traversal(order, node->right);
+				std::cout << node->data << ",";
+				break;
+		}
+	}
+}
+
+template <class T>
 void Tree<T>::printSideways( ) {
 	printSideways(overallRoot, 0);
 }
@@ -151,9 +189,9 @@ Tree<T> Tree<T>::combineWith(Tree t) {
 
 template <class T>
 TreeNode<T> Tree<T>::getIfValid(TreeNode<T>* node, bool left) {
-	if( node == nullptr )
-		return nullptr;
-	return left ? node.left : node.right;
+	if( node )
+		return left ? node.left : node.right;
+	return nullptr;
 }
 
 
