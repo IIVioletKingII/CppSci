@@ -11,8 +11,8 @@ template <class T>
 class Tree {
 	public:
 		Tree( );
-		Tree(const TreeNode<T> node);
-		Tree(TreeNode<T>* node, bool fullTree);
+		// Tree(const TreeNode<T> node);
+		Tree(TreeNode<T>* node, bool fullTree = false);
 
 		~Tree( );
 
@@ -34,7 +34,19 @@ class Tree {
 		TreeNode<T> makePerfect(TreeNode<T>* node, int maxHeight, int lvl);
 		int matches(Tree tree);
 
+		/**
+		 * @brief
+		 *
+		 * @param order 0 - in, 1 - pre, 2 - post
+		 */
+		void traversal(std::string order = "in");
+
 	private:
+		/**
+		 * @param order 0 - in, 1 - pre, 2 - post
+		 */
+		void traversal(int order, TreeNode<T>* node);
+
 		void deleteNode(TreeNode<T>* node);
 
 		void insert(T val, TreeNode<T>* node);
